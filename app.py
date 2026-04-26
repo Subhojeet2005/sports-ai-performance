@@ -11,7 +11,7 @@ st.title("🏏 AI Sports Performance Calculator")
 st.header("Enter Player Stats")
 
 runs = st.number_input("Runs Scored", min_value=0, step=1)
-balls = st.number_input("Balls Faced", min_value=1, step=1)
+balls = st.number_input("Balls Faced", min_value=0, step=1)
 wickets = st.number_input("Wickets Taken", min_value=0, step=1)
 catches = st.number_input("Catches", min_value=0, step=1)
 
