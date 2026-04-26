@@ -1,51 +1,60 @@
+# 🏏 Batting Agent
+def batting_agent(player):
+    sr = player.strike_rate()
+
+    if player.runs > 50 and sr > 140:
+        return "🔥 Excellent batting performance"
+    elif player.runs > 30:
+        return "👍 Good batting contribution"
+    else:
+        return "⚠️ Batting needs improvement"
+
+
+# 🎯 Bowling Agent
+def bowling_agent(player):
+    if player.wickets >= 3:
+        return "🔥 Outstanding bowling spell"
+    elif player.wickets >= 1:
+        return "👍 Decent bowling effort"
+    else:
+        return "⚠️ No bowling impact"
+
+
+# 🧤 Fielding Agent
+def fielding_agent(player):
+    if player.catches >= 2:
+        return "🔥 Excellent fielding"
+    elif player.catches == 1:
+        return "👍 Good fielding contribution"
+    else:
+        return "⚠️ Fielding needs improvement"
+
+
+# 🧠 Final Decision Agent
 def analyze(player):
     score = player.score()
-    strike_rate = player.strike_rate()
 
-    # 🎯 Performance level
-    if score >= 150:
-        level = "🔥 Excellent"
-    elif score >= 100:
-        level = "👍 Good"
-    elif score >= 60:
-        level = "⚠️ Average"
-    else:
-        level = "❌ Poor"
+    bat = batting_agent(player)
+    bowl = bowling_agent(player)
+    field = fielding_agent(player)
 
-    analysis = f"{level} performance with score {score}"
-
-    # 💡 Suggestions
+    # 🧠 Combine insights
     suggestions = []
 
-    # Batting
-    if strike_rate < 100:
-        suggestions.append("Increase strike rate — play more attacking shots")
-    elif strike_rate > 150:
-        suggestions.append("Outstanding strike rate — keep dominating")
+    if "needs improvement" in bat.lower():
+        suggestions.append("Work on batting technique and shot selection")
 
-    # Bowling
-    if player.wickets == 0:
+    if "no bowling impact" in bowl.lower():
         suggestions.append("Improve bowling accuracy and variation")
-    elif player.wickets >= 3:
-        suggestions.append("Excellent bowling performance")
 
-    # Fielding
-    if player.catches == 0:
-        suggestions.append("Work on fielding reflexes")
-    else:
-        suggestions.append("Good fielding contribution")
+    if "needs improvement" in field.lower():
+        suggestions.append("Practice fielding drills")
 
-    # 🧠 Summary
-    if score >= 120 and player.wickets >= 1:
-        summary = "Strong all-round performance 💪"
-    elif score < 60:
-        summary = "Needs major improvement"
-    else:
-        summary = "Decent performance with scope to improve"
+    summary = f"{bat} | {bowl} | {field}"
 
     return {
         "score": score,
-        "analysis": analysis,
-        "summary": summary,
-        "suggestions": suggestions
+        "analysis": summary,
+        "summary": "Multi-agent analysis complete 🤖",
+        "suggestions": suggestions if suggestions else ["All areas performing well 💯"]
     }
