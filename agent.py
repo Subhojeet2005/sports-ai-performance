@@ -1,13 +1,31 @@
 # 🏏 Batting Agent
 def batting_agent(player):
     sr = player.strike_rate()
+    runs = player.runs
+    wickets = player.wickets   # using as match context (pressure)
 
-    if player.runs > 50 and sr > 140:
-        return "🔥 Excellent batting performance"
-    elif player.runs > 30:
-        return "👍 Good batting contribution"
+    # 🔥 High impact innings
+    if runs >= 50 and sr >= 150:
+        if wickets >= 7:
+            return "🔥 Match-saving knock under pressure"
+        else:
+            return "🔥 Dominant batting performance"
+
+    # 👍 Good but not match-defining
+    elif runs >= 30 and sr >= 120:
+        return "👍 Solid batting contribution"
+
+    # ⚠️ Quick but low impact
+    elif runs < 30 and sr >= 140:
+        return "⚠️ Quick runs but limited impact"
+
+    # ⚠️ Slow innings
+    elif sr < 100:
+        return "⚠️ Slow scoring rate — needs improvement"
+
+    # ❌ Poor
     else:
-        return "⚠️ Batting needs improvement"
+        return "❌ Weak batting performance"
 
 
 # 🎯 Bowling Agent
