@@ -2,20 +2,30 @@ import streamlit as st
 from performance import PlayerPerformance
 from agent import analyze
 
+# 🎯 Page config
+st.set_page_config(page_title="AI Sports Analyzer", page_icon="🏏")
+
 st.title("🏏 AI Sports Performance Calculator")
 
-runs = st.number_input("Runs", min_value=0)
-balls = st.number_input("Balls", min_value=1)
-wickets = st.number_input("Wickets", min_value=0)
-catches = st.number_input("Catches", min_value=0)
+# 🧾 Inputs
+runs = st.number_input("Runs Scored", min_value=0, step=1)
+balls = st.number_input("Balls Faced", min_value=1, step=1)
+wickets = st.number_input("Wickets Taken", min_value=0, step=1)
+catches = st.number_input("Catches", min_value=0, step=1)
 
-if st.button("Analyze"):
+# 🚀 Button
+if st.button("Analyze Performance"):
+
     player = PlayerPerformance(runs, balls, wickets, catches)
-    score, analysis, suggestions = analyze(player)
+    result = analyze(player)
 
-    st.subheader(f"Score: {score}")
-    st.write("Analysis:", analysis)
+    # 📊 Output
+    st.subheader("📊 Performance Result")
 
-    st.write("Suggestions:")
-    for s in suggestions:
-        st.write("-", s)
+    st.write(f"**Score:** {result['score']}")
+    st.write(f"**Analysis:** {result['analysis']}")
+    st.write(f"**Summary:** {result['summary']}")
+
+    st.write("### 💡 Suggestions")
+    for s in result["suggestions"]:
+        st.write(f"- {s}")
