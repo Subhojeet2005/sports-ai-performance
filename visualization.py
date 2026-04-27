@@ -1,3 +1,4 @@
+
 import matplotlib.pyplot as plt
 import numpy as np
 import streamlit as st
@@ -50,4 +51,5 @@ def show_visuals(player, runs, wickets, catches):
     ax2.set_xticks(angles[:-1])
     ax2.set_xticklabels(categories)
 
+>>>>>>> 96ff8d4 (added visualization for stable deploy)
     st.pyplot(fig2)
