@@ -33,7 +33,7 @@ requirements.txt → Dependencies (optional)
 ⚙️ Installation Guide
 
 Step 1: Clone the repository
-git clone https://github.com/your-username/sports-ai-performance.git
+git clone https://github.com/Subhojeet2005/sports-ai-performance.git
 
 cd sports-ai-performance
 
