@@ -73,4 +73,6 @@ if st.button("Analyze Performance"):
         st.write(f"- {s}")
 
     # 📊 Visualization (ONLY inside button)
- show_visuals(player, runs, wickets, catches)
+
+
+    show_visuals(player, runs, wickets, catches)
